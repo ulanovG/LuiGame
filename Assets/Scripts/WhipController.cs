@@ -13,6 +13,8 @@ public class WhipController : MonoBehaviour
     public float whipSpeedBack = 20f;
     private GameObject pulledEnemy;
     private GameObject targetEnemy;
+    private bool drawWhip = false;
+    public LineRenderer whipLine;
 
     void Update()
     {
@@ -30,7 +32,7 @@ public class WhipController : MonoBehaviour
                 back = true;
             }
         }
-        if(pulling)
+        if (pulling)
         {
             transform.position = pulledEnemy.transform.position;
         }
@@ -45,17 +47,30 @@ public class WhipController : MonoBehaviour
             else
             {
                 back = false;
+                drawWhip = false;
                 playerController.WhipReturned();
             }
+        }
+
+        DrawWhip();
+    }
+
+    void DrawWhip()
+    {
+        whipLine.gameObject.SetActive(drawWhip);
+        if(drawWhip)
+        {
+            whipLine.SetPosition(1, transform.localPosition);
         }
     }
 
     public void Whip(Vector3 targetPoint, bool pull, GameObject targetEn)
     {
         target = targetPoint;
-        whip = true;
         playerPull = pull;
         targetEnemy = targetEn;
+        whip = true;
+        drawWhip = true;
     }
     public void PullOver()
     {
