@@ -110,8 +110,8 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("lastMoveZ", lastMovement.z);
         if (!whiping && canAttack)
         {
-            animator.SetFloat("lookX", lookingDirection.x);
-            animator.SetFloat("lookZ", lookingDirection.z);
+            animator.SetFloat("lookX", Mathf.Round(lookingDirection.x));
+            animator.SetFloat("lookZ", Mathf.Round(lookingDirection.z));
         }
 
         animator.SetBool("whipStart", whipController.Whipping);
