@@ -108,8 +108,15 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("moveMag", movement.magnitude);
         animator.SetFloat("lastMoveX", lastMovement.x);
         animator.SetFloat("lastMoveZ", lastMovement.z);
-        animator.SetFloat("lookX", lookingDirection.x);
-        animator.SetFloat("lookZ", lookingDirection.z);
+        if (!whiping && canAttack)
+        {
+            animator.SetFloat("lookX", lookingDirection.x);
+            animator.SetFloat("lookZ", lookingDirection.z);
+        }
+
+        animator.SetBool("whipStart", whipController.Whipping);
+        animator.SetBool("whipPull", whipController.WhipPulling);
+        animator.SetBool("whipPullSelf", whipController.WhipPullingSelf);
     }
 
     void Whip(Vector3 targetPosition, bool pull, GameObject targetEnemy)

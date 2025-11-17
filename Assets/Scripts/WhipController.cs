@@ -106,4 +106,17 @@ public class WhipController : MonoBehaviour
         }
         
     }
+
+    public bool Whipping
+    {
+        get { return whip; }
+    }
+    public bool WhipPulling
+    {
+        get { return back || (pulling && playerPull); }
+    }
+    public bool WhipPullingSelf
+    {
+        get { return pulling && !playerPull; }
+    }
 }
