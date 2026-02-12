@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     public GameObject target;
     public CharacterController controller;
     public Animator animator;
+    public float deathAnimationLength = 3f;
     public float speed = 1.5f;
     public float bordersX = 12.5f;
     public float houseAngle = 20f;
@@ -89,7 +90,6 @@ public class EnemyController : MonoBehaviour
         if (stunTimer == 0 && stunned)
         {
             stunned = false;
-            animator.SetBool("stunned", false);
         }
         Animate();
     }
@@ -101,11 +101,15 @@ public class EnemyController : MonoBehaviour
         animator.SetFloat("moveMag", movement.magnitude);
         animator.SetFloat("lastMoveX", lastMovement.x);
         animator.SetFloat("lastMoveZ", lastMovement.z);
+        animator.SetBool("pulled", pulled || pulling);
+        animator.SetBool("stunned", stunned);
+        animator.SetBool("dead", freeze);
     }
 
     public void GetPulled()
     {
         pulled = true;
+        
     }
     public void GetPulling()
     {
@@ -151,13 +155,12 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         freeze = true;
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, deathAnimationLength);
     }
 
     void Stun(float duration)
     {
         stunTimer = duration;
         stunned = true;
-        animator.SetBool("stunned", true);
     }
 }
