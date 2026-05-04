@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "LuiGame.sln"
+    "dotnet.defaultSolution": "LuiGame.slnx"
 }
