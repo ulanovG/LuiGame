@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 Whip(targetPosition, pullingWhip, targetEnemy);
+                LastMovementToLookingDirection();
             }
         }
 
@@ -96,6 +97,7 @@ public class PlayerController : MonoBehaviour
         {            
             Attack();
             animator.SetTrigger("attack");
+            LastMovementToLookingDirection();
         }
 
         Animate();
@@ -168,5 +170,11 @@ public class PlayerController : MonoBehaviour
     void ResetAttack()
     {
         canAttack = true;
+    }
+
+    void LastMovementToLookingDirection()
+    {
+        lastMovement.x = Mathf.Round(lookingDirection.x);
+        lastMovement.z = Mathf.Round(lookingDirection.z);
     }
 }

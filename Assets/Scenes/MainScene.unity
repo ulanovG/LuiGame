@@ -1126,13 +1126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c103068bcc2d46418a3218a4f07240f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 5.1
-  spawnPeriod: 5.1
   target: {fileID: 243835396}
   player: {fileID: 336971472}
   whipController: {fileID: 1872963668}
   enemyContainer: {fileID: 1240190927}
-  enemy: {fileID: 1444878279729175165, guid: 19ccf3298ad3eef469a3ae7f6be83961, type: 3}
   spawns:
   - {fileID: 367743126}
   - {fileID: 435066028}
@@ -1762,6 +1759,52 @@ Transform:
   - {fileID: 1918824649}
   - {fileID: 714490835}
   - {fileID: 717106416}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &636264063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 636264065}
+  - component: {fileID: 636264064}
+  m_Layer: 0
+  m_Name: ScenarioPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &636264064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636264063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ab178736fa03a44900acfeeecb78a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenario: {fileID: 11400000, guid: 00a3a34073916e547ba40804e780354b, type: 2}
+  enemySpawnManager: {fileID: 286893625}
+--- !u!4 &636264065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636264063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &684071294
@@ -4133,3 +4176,4 @@ SceneRoots:
   - {fileID: 361343747}
   - {fileID: 1615669633}
   - {fileID: 1240190928}
+  - {fileID: 636264065}

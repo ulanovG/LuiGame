@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623c4fa294c85fe40b65d26b1bd58cae, type: 3}
+  m_Name: spWave
+  m_EditorClassIdentifier: 
+  groups:
+  - {fileID: 11400000, guid: b05d6dbd056b9724ca79453eaf7e7a64, type: 2}
+  - {fileID: 11400000, guid: 5a3a7638e6ff02c429fa7708ecec72ad, type: 2}
+  delay: 3
+  repeat: 999
