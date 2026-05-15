@@ -360,8 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 9160535677398324641}
   whipStart: {fileID: 1220180190953278792}
-  whipSpeed: 30
-  whipSpeedBack: 40
+  whipSpeed: 40
+  whipSpeedBack: 50
   whipLine: {fileID: 5828955418145227471}
 --- !u!54 &4410868440255966370
 Rigidbody:

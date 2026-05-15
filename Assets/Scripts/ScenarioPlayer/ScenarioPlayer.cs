@@ -12,9 +12,33 @@ public class ScenarioPlayer : MonoBehaviour
     //
     void Start()
     {
-        PlayScenario();  
+        if (GameManager.Instance != null)
+        {
+            if (!string.IsNullOrEmpty(GameManager.Instance.scenario))
+            {
+                var selectedScenario = GameManager.Instance.activeScenarios.FirstOrDefault(s => s.key == GameManager.Instance.scenario).spScenario;
+                if (selectedScenario != null)
+                {
+                    scenario = selectedScenario;
+                    Debug.Log("Star scenario " + GameManager.Instance.scenario);
+                }
+                else
+                {
+                    Debug.LogError("Scenario not found");    
+                }
+            }
+            else
+            {
+                Debug.LogError("Scenario key empty");
+            }
+        }
+        else
+        {
+            Debug.LogError("Game Manager missing");
+        }
+        PlayScenario();
     }
-    //
+
     public void PlayScenario()
     {
         if (scenario == null || scenario.waves.Count == 0)
