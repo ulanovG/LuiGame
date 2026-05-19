@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool isPaused = false;
     private Vector3 movement;
     private Vector3 lastMovement;
     private Vector3 lookingDirection;
@@ -32,75 +33,82 @@ public class PlayerController : MonoBehaviour
     public WhipController whipController;
     public Transform whipStart;
 
+    void Start()
+    {
+        GameController.onGamePaused += GamePaused;
+    }
 
     void Update()
     {
-        if (!whiping && !pulled && canAttack)
+        if(!isPaused)
         {
-            movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-
-            if (movement.magnitude >= 0.1f)
+            if (!whiping && !pulled && canAttack)
             {
-                controller.Move(movement.normalized * speed * Time.deltaTime);
+                movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+
+                if (movement.magnitude >= 0.1f)
+                {
+                    controller.Move(movement.normalized * speed * Time.deltaTime);
+                }
             }
-        }
-        else if (pulled)
-        {
-            movement = pullingEnemy.transform.position - transform.position;
-            
-            if (movement.magnitude >= 0.1f)
+            else if (pulled)
             {
-                controller.Move(movement.normalized * pulledSpeed * Time.deltaTime);
+                movement = pullingEnemy.transform.position - transform.position;
+                
+                if (movement.magnitude >= 0.1f)
+                {
+                    controller.Move(movement.normalized * pulledSpeed * Time.deltaTime);
+                }
             }
-        }
 
-        if (movement.magnitude >= 0.1f && (movement.x != 0 || movement.z != 0))
-        {
-            lastMovement = movement;
-        }
+            if (movement.magnitude >= 0.1f && (movement.x != 0 || movement.z != 0))
+            {
+                lastMovement = movement;
+            }
 
 
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMaskRoad))
-        {
-            var targetPosition = hit.point;
-            targetPosition.y = transform.position.y;
-            lookingDirection = (targetPosition - transform.position).normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(lookingDirection);
-            rotationPoint.transform.rotation = targetRotation;
-            
-            var mainPs = attackVfx.main;
-            mainPs.startRotationZMultiplier = (targetRotation.eulerAngles.y + 90) * Mathf.Deg2Rad;
-        }
-
-        if ((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")) && canAttack && !whiping)
-        {
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMaskRoadEnemy))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMaskRoad))
             {
                 var targetPosition = hit.point;
-                GameObject targetEnemy = null;
-                bool pullingWhip = Input.GetButtonDown("Fire1");
+                targetPosition.y = transform.position.y;
+                lookingDirection = (targetPosition - transform.position).normalized;
+                Quaternion targetRotation = Quaternion.LookRotation(lookingDirection);
+                rotationPoint.transform.rotation = targetRotation;
+                
+                var mainPs = attackVfx.main;
+                mainPs.startRotationZMultiplier = (targetRotation.eulerAngles.y + 90) * Mathf.Deg2Rad;
+            }
 
-                if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if ((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")) && canAttack && !whiping)
+            {
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMaskRoadEnemy))
                 {
-                    targetEnemy = hit.collider.GetComponent<EnemyController>().GetPullPoint();
-                }
+                    var targetPosition = hit.point;
+                    GameObject targetEnemy = null;
+                    bool pullingWhip = Input.GetButtonDown("Fire1");
 
-                Whip(targetPosition, pullingWhip, targetEnemy);
+                    if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                    {
+                        targetEnemy = hit.collider.GetComponent<EnemyController>().GetPullPoint();
+                    }
+
+                    Whip(targetPosition, pullingWhip, targetEnemy);
+                    LastMovementToLookingDirection();
+                }
+            }
+
+            if (Input.GetButtonDown("Jump") && canAttack && !whiping)
+            {            
+                Attack();
+                animator.SetTrigger("attack");
                 LastMovementToLookingDirection();
             }
-        }
 
-        if (Input.GetButtonDown("Jump") && canAttack && !whiping)
-        {            
-            Attack();
-            animator.SetTrigger("attack");
-            LastMovementToLookingDirection();
+            Animate();
         }
-
-        Animate();
     }
 
     void Animate()
@@ -176,5 +184,10 @@ public class PlayerController : MonoBehaviour
     {
         lastMovement.x = Mathf.Round(lookingDirection.x);
         lastMovement.z = Mathf.Round(lookingDirection.z);
+    }
+
+    void GamePaused(bool paused)
+    {
+        isPaused = paused;
     }
 }

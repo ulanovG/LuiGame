@@ -14,6 +14,5 @@ public class TargetController : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         roadsManager.EndTriggerEnter();
-        Debug.Log("road");
     }
 }
