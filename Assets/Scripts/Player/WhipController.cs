@@ -98,6 +98,7 @@ public class WhipController : MonoBehaviour
             pulledEnemy = enemyController.GetPullPoint();
             whip = false;
             pulling = true;
+            back = false;
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Borders"))
         {

@@ -476,7 +476,7 @@ MonoBehaviour:
     m_Bits: 512
   attackDamage: 10
   attackCooldown: 0.3
-  attackColliderController: {fileID: 6852922489280441678}
+  attackColliderController: {fileID: 0}
   layerMaskEnemy:
     serializedVersion: 2
     m_Bits: 256
@@ -519,10 +519,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1238015651023754714}
   - component: {fileID: 8505072793087571124}
-  - component: {fileID: 6852922489280441678}
   m_Layer: 6
   m_Name: attackCollider
-  m_TagString: Untagged
+  m_TagString: attackCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -564,19 +563,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: b556c6d0a58386d4884fd75554846cfd, type: 3}
---- !u!114 &6852922489280441678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4131452255619876029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4ea5b362a885d44843a2f8223a08f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders: []
 --- !u!1 &4548185922443074545
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     private bool canAttack = true;
     public int attackDamage = 10;
     public float attackCooldown = 2f;
-    public AttackColliderController attackColliderController;
     public LayerMask layerMaskEnemy;
 
     private bool whiping = false;
@@ -32,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public float pulledSpeed = 3f;
     public WhipController whipController;
     public Transform whipStart;
+
+    public static event Action<int> onPlayerAttack;
 
     void Start()
     {
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMaskRoadEnemy))
                 {
+                    whiping = true;
                     var targetPosition = hit.point;
                     GameObject targetEnemy = null;
                     bool pullingWhip = Input.GetButtonDown("Fire1");
@@ -125,14 +127,12 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetBool("whipStart", whipController.Whipping);
-        animator.SetBool("whipPull", whipController.WhipPulling);
         animator.SetBool("whipPullSelf", whipController.WhipPullingSelf);
+        animator.SetBool("whipPull", whipController.WhipPulling);
     }
 
     void Whip(Vector3 targetPosition, bool pull, GameObject targetEnemy)
     {
-        whiping = true;
-        
         if(Vector3.Distance(targetPosition, whipStart.position) > whipMaxLength)
         {
             targetPosition = whipStart.position + ((targetPosition - whipStart.position).normalized * whipMaxLength);
@@ -163,13 +163,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void Attack()
-    {
-        var hitEnemies = attackColliderController.colliders;
-        foreach (var enemy in hitEnemies)
-        {
-            if (enemy != null)
-                enemy.GetComponent<EnemyController>().TakeDamage(attackDamage);
-        }
+    {   
+        onPlayerAttack?.Invoke(attackDamage);
 
         canAttack = false;
         Invoke("ResetAttack", attackCooldown);

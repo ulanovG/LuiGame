@@ -2483,6 +2483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenarioPlayer: {fileID: 636264064}
+  debug: 1
   pauseMenu: {fileID: 1199223585}
   loseMenu: {fileID: 1704128536}
 --- !u!4 &1013274277
@@ -4729,6 +4730,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 9160535677398324641, guid: f3c08c108f78f114faee0cbab28bc500, type: 3}
+      propertyPath: attackColliderController
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

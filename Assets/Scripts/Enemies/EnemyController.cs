@@ -1,6 +1,7 @@
 using System.Xml.Serialization;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class EnemyController : MonoBehaviour
 {
@@ -120,14 +121,18 @@ public class EnemyController : MonoBehaviour
         pulling = false;
         Stun(pullStunDuration);
     }
+    private void StopPulled(ControllerColliderHit hit)
+    {
+        pulled = false;
+        whipController.PullOver();
+        Stun(pullStunDuration);
+    }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(pulled && hit.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            pulled = false;
-            whipController.PullOver();
-            Stun(pullStunDuration);
+            StopPulled(hit);
         }
     }
 
@@ -136,11 +141,33 @@ public class EnemyController : MonoBehaviour
         return pullPoint;
     }
 
+    void OnTriggerEnter (Collider other) 
+    {
+        if(other.gameObject.tag == "attackCollider")
+        {
+            PlayerController.onPlayerAttack += TakeDamage;
+        }
+    }
+    void OnTriggerExit (Collider other) 
+    {
+        if(other.gameObject.tag == "attackCollider")
+        {
+            PlayerController.onPlayerAttack -= TakeDamage;
+        }
+    }
+    void OnDisable()
+    {
+        PlayerController.onPlayerAttack -= TakeDamage;
+    }
+
     public void TakeDamage (int damage)
     {
         currentHealth -= damage;
 
-        hitEffect.Play(true);
+        if(hitEffect != null)
+        {
+            hitEffect.Play(true);
+        }
 
         if(currentHealth <= 0)
         {
@@ -155,6 +182,7 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         freeze = true;
+        PlayerController.onPlayerAttack -= TakeDamage;
         Destroy(gameObject, deathAnimationLength);
     }
 

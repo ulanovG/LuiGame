@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     public ScenarioPlayer scenarioPlayer;
     private bool isPaused = false;
 
+    public bool debug = false;
+
     public GameObject pauseMenu;
     public GameObject loseMenu;
 
@@ -72,9 +74,16 @@ public class GameController : MonoBehaviour
 
     void LoseGame()
     {
-        isPaused = true;
-        onGamePaused?.Invoke(isPaused);
-        loseMenu.SetActive(true);
-        Time.timeScale = 0f;
+        if(!debug)
+        {
+            isPaused = true;
+            onGamePaused?.Invoke(isPaused);
+            loseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Debug.LogWarning("LOSE");
+        }
     }
 }
