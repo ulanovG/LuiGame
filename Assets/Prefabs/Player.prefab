@@ -258,7 +258,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 0524648f1032ded408abb867784a85f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -476,7 +476,6 @@ MonoBehaviour:
     m_Bits: 512
   attackDamage: 10
   attackCooldown: 0.3
-  attackColliderController: {fileID: 0}
   layerMaskEnemy:
     serializedVersion: 2
     m_Bits: 256
