@@ -2023,6 +2023,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -455.85498
       objectReference: {fileID: 0}
+    - target: {fileID: 8329946510208458121, guid: b2c16f18c0053c7469faea20b117c143, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1013274276}
+    - target: {fileID: 8329946510208458121, guid: b2c16f18c0053c7469faea20b117c143, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadGameScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329946510208458121, guid: b2c16f18c0053c7469faea20b117c143, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543758753727431044, guid: b2c16f18c0053c7469faea20b117c143, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1013274276}
+    - target: {fileID: 8543758753727431044, guid: b2c16f18c0053c7469faea20b117c143, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenuScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543758753727431044, guid: b2c16f18c0053c7469faea20b117c143, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 9113617049551939533, guid: b2c16f18c0053c7469faea20b117c143, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2607,6 +2631,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8912892942839313093, guid: f6908035fe00038458b1cf34653c7024, type: 3}
   m_PrefabInstance: {fileID: 1819607131101863103}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &861902520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3972295428998863693, guid: f6908035fe00038458b1cf34653c7024, type: 3}
+  m_PrefabInstance: {fileID: 1819607131101863103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed924bbc87dedb499b771d8a611dd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1013274275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,9 +2672,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenarioPlayer: {fileID: 636264064}
-  debug: 1
+  debug: 0
+  scoreController: {fileID: 861902520}
   pauseMenu: {fileID: 1199223585}
   loseMenu: {fileID: 640600200}
+  scoreText: {fileID: 1616459809}
 --- !u!4 &1013274277
 Transform:
   m_ObjectHideFlags: 0
@@ -3477,6 +3514,17 @@ Transform:
   - {fileID: 336971473}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1616459809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9152895577901173994, guid: b2c16f18c0053c7469faea20b117c143, type: 3}
+  m_PrefabInstance: {fileID: 640600198}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1710238167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5042,6 +5090,30 @@ PrefabInstance:
     - target: {fileID: 2599033339808384874, guid: 0c63591bcbc63fe4abdb40baa4d94671, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -474.61996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312763999024568866, guid: 0c63591bcbc63fe4abdb40baa4d94671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1013274276}
+    - target: {fileID: 4312763999024568866, guid: 0c63591bcbc63fe4abdb40baa4d94671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenuScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312763999024568866, guid: 0c63591bcbc63fe4abdb40baa4d94671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790295800600122147, guid: 0c63591bcbc63fe4abdb40baa4d94671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1013274276}
+    - target: {fileID: 4790295800600122147, guid: 0c63591bcbc63fe4abdb40baa4d94671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790295800600122147, guid: 0c63591bcbc63fe4abdb40baa4d94671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6428884060256072055, guid: 0c63591bcbc63fe4abdb40baa4d94671, type: 3}
       propertyPath: m_AnchorMax.y

@@ -3799,6 +3799,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2511786406117318131, guid: 40d2caa5de624b847a66bcd26c5f0a72, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1169260929}
+    - target: {fileID: 2511786406117318131, guid: 40d2caa5de624b847a66bcd26c5f0a72, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadGameScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2646902151441107983, guid: 40d2caa5de624b847a66bcd26c5f0a72, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

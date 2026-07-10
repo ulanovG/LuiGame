@@ -2,6 +2,7 @@ using System.Xml.Serialization;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
@@ -33,6 +34,9 @@ public class EnemyController : MonoBehaviour
     public GameObject player;
     public WhipController whipController;
     public float pullStunDuration = 0.2f;
+
+    public int enemyScore = 10;
+    public static event Action<int> onEnemyDie;
 
     void Start()
     {
@@ -182,7 +186,10 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         freeze = true;
+
         PlayerController.onPlayerAttack -= TakeDamage;
+        onEnemyDie?.Invoke(enemyScore);
+
         Destroy(gameObject, deathAnimationLength);
     }
 

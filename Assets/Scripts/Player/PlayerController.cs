@@ -185,4 +185,9 @@ public class PlayerController : MonoBehaviour
     {
         isPaused = paused;
     }
+
+    void OnDestroy()
+    {
+        GameController.onGamePaused -= GamePaused;
+    }
 }

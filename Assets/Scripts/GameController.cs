@@ -1,7 +1,9 @@
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -10,13 +12,17 @@ public class GameController : MonoBehaviour
 
     public bool debug = false;
 
+    public ScoreController scoreController;
     public GameObject pauseMenu;
     public GameObject loseMenu;
+    public TextMeshProUGUI scoreText;
 
     public static event Action<bool> onGamePaused;
 
     void Start()
     {
+        Time.timeScale = 1f;
+
         TargetLightController.onGameLose += LoseGame;
 
         if (GameManager.Instance != null)
@@ -57,7 +63,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void Pause() 
+    public void Pause() 
     {
         isPaused = true;
         onGamePaused?.Invoke(isPaused);
@@ -77,13 +83,42 @@ public class GameController : MonoBehaviour
         if(!debug)
         {
             isPaused = true;
+
             onGamePaused?.Invoke(isPaused);
+            scoreController.gameObject.SetActive(false);
+            scoreText.text = scoreController.Score.ToString();
             loseMenu.SetActive(true);
+
             Time.timeScale = 0f;
         }
         else
         {
             Debug.LogWarning("LOSE");
         }
+    }
+
+    public void LoadMenuScene()
+    {
+        StartCoroutine(LoadSceneAsync("MainMenu"));
+    }
+    public void ReloadGameScene()
+    {
+        StartCoroutine(LoadSceneAsync("GameScene"));
+    }
+
+    IEnumerator LoadSceneAsync(string name)
+    {
+        var load = SceneManager.LoadSceneAsync(name);
+
+        while (!load.isDone)
+        {
+            Debug.Log(load.progress);
+            yield return null;
+        }
+    }
+
+    void OnDestroy()
+    {
+        TargetLightController.onGameLose -= LoseGame;
     }
 }
