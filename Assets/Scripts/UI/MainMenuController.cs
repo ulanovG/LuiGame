@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    public ScenariosSelect scenariosSelect;
+
     void Start()
     {
         Time.timeScale = 1f;
@@ -11,7 +13,7 @@ public class MainMenuController : MonoBehaviour
     
     public void LoadGameScene()
     {
-        GameManager.Instance.scenario = "test";
+        GameManager.Instance.scenario = scenariosSelect.GetScenario();
         StartCoroutine(LoadGameSceneAsync());
     }
 
