@@ -15,7 +15,9 @@ public class GameController : MonoBehaviour
     public ScoreController scoreController;
     public GameObject pauseMenu;
     public GameObject loseMenu;
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI loseScoreText;
+    public GameObject winMenu;
+    public TextMeshProUGUI winScoreText;
 
     public static event Action<bool> onGamePaused;
 
@@ -24,6 +26,7 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1f;
 
         TargetLightController.onGameLose += LoseGame;
+        ScenarioPlayer.onGameWin += WinGame;
 
         if (GameManager.Instance != null)
         {
@@ -86,7 +89,7 @@ public class GameController : MonoBehaviour
 
             onGamePaused?.Invoke(isPaused);
             scoreController.gameObject.SetActive(false);
-            scoreText.text = scoreController.Score.ToString();
+            loseScoreText.text = scoreController.Score.ToString();
             loseMenu.SetActive(true);
 
             Time.timeScale = 0f;
@@ -94,6 +97,24 @@ public class GameController : MonoBehaviour
         else
         {
             Debug.LogWarning("LOSE");
+        }
+    }
+    void WinGame()
+    {
+        if(!debug)
+        {
+            isPaused = true;
+
+            onGamePaused?.Invoke(isPaused);
+            scoreController.gameObject.SetActive(false);
+            winScoreText.text = scoreController.Score.ToString();
+            winMenu.SetActive(true);
+
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Debug.LogWarning("WIN");
         }
     }
 
@@ -120,5 +141,6 @@ public class GameController : MonoBehaviour
     void OnDestroy()
     {
         TargetLightController.onGameLose -= LoseGame;
+        ScenarioPlayer.onGameWin -= WinGame;
     }
 }

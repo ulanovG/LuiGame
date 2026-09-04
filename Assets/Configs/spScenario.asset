@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d384ebe1d1fd5442839f94d59d34f80, type: 3}
   m_Name: spScenario
   m_EditorClassIdentifier: 
+  time: 60
   waves:
   - {fileID: 11400000, guid: c469dbbb83bd72444888a264069e37b9, type: 2}

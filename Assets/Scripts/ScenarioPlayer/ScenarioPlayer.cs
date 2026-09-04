@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
+using System.ComponentModel;
 using UnityEngine;
 
 public class ScenarioPlayer : MonoBehaviour
 {
     public spScenario scenario;
     public EnemySpawnManager enemySpawnManager;
+
+    public static event Action onGameWin;
 
     public void PlayScenario()
     {
@@ -15,6 +19,11 @@ public class ScenarioPlayer : MonoBehaviour
         }
 
         StartCoroutine(ScenarioCoroutine());
+        
+        if (scenario.time != 0)
+        {
+            Invoke("WinScenario", scenario.time);
+        }
     }
 
     IEnumerator ScenarioCoroutine()
@@ -36,5 +45,10 @@ public class ScenarioPlayer : MonoBehaviour
             }
         }
         
+    }
+
+    public void WinScenario()
+    {
+        onGameWin?.Invoke();
     }
 }
