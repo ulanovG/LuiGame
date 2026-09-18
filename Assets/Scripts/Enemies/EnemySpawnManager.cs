@@ -12,7 +12,7 @@ public class EnemySpawnManager : MonoBehaviour
     public GameObject enemyContainer;
     public List<GameObject> spawns;
 
-    public void SpawnEnemy(GameObject enemy, string spawnName)
+    public void SpawnEnemy(GameObject enemy, string spawnName, float centerBias)
     {
         if(spawns.FirstOrDefault(s => s.name == spawnName) is GameObject spawn)
         {
@@ -21,6 +21,7 @@ public class EnemySpawnManager : MonoBehaviour
             enemyController.target = target;
             enemyController.player = player;
             enemyController.whipController = whipController;
+            enemyController.centerBias = centerBias;
         }
         else
         {

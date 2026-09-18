@@ -8,16 +8,19 @@ public class EnemyController : MonoBehaviour
 {
     private Vector3 movement;
     private Vector3 lastMovement;
+    private Vector3 centerDirection;
+    private Vector3 leftAngled;
+    private Vector3 rightAngled;
+    private float currentCenterBias;
 
     public GameObject target;
     public CharacterController controller;
     public Animator animator;
     public float deathAnimationLength = 3f;
     public float speed = 1.5f;
+    public float centerBias = 0f;
     public float bordersX = 12.5f;
     public float houseAngle = 20f;
-    private Vector3 leftAngled;
-    private Vector3 rightAngled;
 
     private bool freeze = false;
     private float stunTimer = 0f;
@@ -43,6 +46,7 @@ public class EnemyController : MonoBehaviour
         currentHealth = maxHealth;
         leftAngled = new Vector3(math.sin(-houseAngle), 0, math.cos(-houseAngle));
         rightAngled = new Vector3(math.sin(houseAngle), 0, math.cos(houseAngle));
+        centerDirection = new Vector3(-transform.position.x, 0, 0);
     }
 
     void Update()
@@ -61,7 +65,8 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                movement = target.transform.position - transform.position;
+                currentCenterBias = centerBias * (transform.position.x / bordersX);
+                movement = currentCenterBias * centerDirection + (1 - currentCenterBias) * (target.transform.position - transform.position);
 
                 if(movement.magnitude > 0.1f) 
                 {

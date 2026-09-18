@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5f5fdb3b5a81841b79babb1a575142, type: 3}
-  m_Name: spMobSpawn1
+  m_Script: {fileID: 11500000, guid: d410d281125394343b3008414e85dad1, type: 3}
+  m_Name: GroupTEST
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1444878279729175165, guid: 19ccf3298ad3eef469a3ae7f6be83961, type: 3}
-  spawnName: spawn1
+  mobSpawns:
+  - {fileID: 11400000, guid: 8395334ad58a09a49a5564e820ac4404, type: 2}

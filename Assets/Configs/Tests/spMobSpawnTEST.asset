@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 623c4fa294c85fe40b65d26b1bd58cae, type: 3}
-  m_Name: spWave
+  m_Script: {fileID: 11500000, guid: 7e5f5fdb3b5a81841b79babb1a575142, type: 3}
+  m_Name: spMobSpawnTEST
   m_EditorClassIdentifier: 
-  groups:
-  - {fileID: 11400000, guid: 5a3a7638e6ff02c429fa7708ecec72ad, type: 2}
-  delay: 3
-  repeat: 999
+  enemy: {fileID: 1444878279729175165, guid: 19ccf3298ad3eef469a3ae7f6be83961, type: 3}
+  spawnName: spawn2
+  movementCenterBias: 0

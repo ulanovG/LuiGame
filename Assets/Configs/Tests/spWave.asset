@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d410d281125394343b3008414e85dad1, type: 3}
-  m_Name: Group1
+  m_Script: {fileID: 11500000, guid: 623c4fa294c85fe40b65d26b1bd58cae, type: 3}
+  m_Name: spWave
   m_EditorClassIdentifier: 
-  mobSpawns:
-  - {fileID: 11400000, guid: 8395334ad58a09a49a5564e820ac4404, type: 2}
+  groups:
+  - {fileID: 11400000, guid: b05d6dbd056b9724ca79453eaf7e7a64, type: 2}
+  delay: 3
+  repeat: 999

@@ -79,6 +79,7 @@ MonoBehaviour:
   animator: {fileID: 4108715260640712785}
   deathAnimationLength: 3.1
   speed: 1.5
+  centerBias: 0
   bordersX: 20
   houseAngle: 20
   hitEffect: {fileID: 2390244228121759511}
@@ -89,6 +90,7 @@ MonoBehaviour:
   player: {fileID: 0}
   whipController: {fileID: 0}
   pullStunDuration: 0.3
+  enemyScore: 10
 --- !u!95 &4108715260640712785
 Animator:
   serializedVersion: 7

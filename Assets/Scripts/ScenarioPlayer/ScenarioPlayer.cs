@@ -39,7 +39,7 @@ public class ScenarioPlayer : MonoBehaviour
                     var group = groupObject as IspGroup;
                     foreach (var mobSpawn in group.MobSpawns)
                     {
-                        enemySpawnManager.SpawnEnemy(mobSpawn.enemy, mobSpawn.spawnName);
+                        enemySpawnManager.SpawnEnemy(mobSpawn.enemy, mobSpawn.spawnName, mobSpawn.movementCenterBias);
                     }
                 }
             }
